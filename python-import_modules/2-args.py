@@ -2,7 +2,7 @@
 import sys
 
 def main():
-    argv = sys.argv[1:]  # Exclude the script name from the arguments list
+    argv = sys.argv[1:]
     num_args = len(argv)
 
     if num_args == 0:
@@ -14,6 +14,7 @@ def main():
 
     for i, arg in enumerate(argv):
         print("{}: {}".format(i + 1, arg))
+
 
 if __name__ == "__main__":
     main()
