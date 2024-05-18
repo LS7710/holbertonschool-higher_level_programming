@@ -1,11 +1,12 @@
 #!/usr/bin/python3
+"""
+This module defines a Square class.
+The purpose of this class is to represent a square, though currently it is empty.
+"""
 
-"""
-This module defines a Square class.S
-"""
 class Square:
     """
-    empty square.
-    N/A
+    Represents an empty square.
+    This class doesn't contain any attributes or methods yet.
     """
     pass
