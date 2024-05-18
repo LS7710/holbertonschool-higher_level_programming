@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """
 This module defines a Square class.
-The purpose of this class is to represent a square, though currently it is empty.
+The purpose of this class is to represent a square.
 """
 
 class Square:
