@@ -1,7 +1,7 @@
 #!/usr/bin/python3
-
 """
-adds the add_integer function that adds two numbers.
+This module provides an add_integer function that adds two numbers.
+The purpose of this module is to demonstrate simple arithmetic operations and type checking in Python.
 """
 
 def add_integer(a, b=98):
@@ -15,8 +15,8 @@ def add_integer(a, b=98):
     Raises:
     TypeError: If either a or b is not an integer or float.
     """
-    if type(a) not in [int, float]:
+    if not isinstance(a, (int, float)):
         raise TypeError("a must be an integer")
-    if type(b) not in [int, float]:
+    if not isinstance(b, (int, float)):
         raise TypeError("b must be an integer")
     return int(a) + int(b)
