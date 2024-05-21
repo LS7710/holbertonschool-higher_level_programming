@@ -1,0 +1,22 @@
+>>> from 5_text_indentation import text_indentation
+>>> text_indentation("Hello. How are you? Today is sunny: great!")
+Hello.$
+$
+How are you?$
+$
+Today is sunny:$
+$
+great!
+>>> text_indentation("One. Two. Three?")
+One.$
+$
+Two.$
+$
+Three?$
+$
+>>> text_indentation("No punctuation here")
+No punctuation here
+>>> text_indentation(123)
+Traceback (most recent call last):
+    ...
+TypeError: text must be a string
