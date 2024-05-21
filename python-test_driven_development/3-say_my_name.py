@@ -1,8 +1,7 @@
 #!/usr/bin/python3
-#!/usr/bin/python3
 """
-This module provides a function say_my_name that prints the full name of a person.
-The function is designed to enhance understanding of basic Python function structure and error handling.
+This module provides a function 'say_my_name' that prints a person's full name.
+It is designed to demonstrate basic Python functionality and error handling.
 """
 
 def say_my_name(first_name, last_name=""):
@@ -11,7 +10,7 @@ def say_my_name(first_name, last_name=""):
 
     Args:
     first_name (str): The first name of the person.
-    last_name (str): The last name of the person. Defaults to an empty string.
+    last_name (str, optional): The last name of the person. Defaults to an empty string.
 
     Raises:
     TypeError: If either first_name or last_name are not strings.
