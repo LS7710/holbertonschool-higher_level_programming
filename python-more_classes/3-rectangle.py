@@ -12,7 +12,7 @@ class Rectangle:
     def __init__(self, width=0, height=0):
         """
         Initialize a new Rectangle with optional width and height.
-        
+
         :param width: The width of the rectangle (default is 0).
         :param height: The height of the rectangle (default is 0).
         """
@@ -30,7 +30,7 @@ class Rectangle:
     def width(self, value):
         """
         Set the width of the rectangle.
-        
+
         :param value: The width to set, must be an integer and >= 0.
         """
         if not isinstance(value, int):
@@ -79,10 +79,11 @@ class Rectangle:
 
     def __str__(self):
         """
-        Return the printable representation of the rectangle using the '#' character.
+        Return the printable representation of the rectangle.
         If width or height is 0, returns an empty string.
         """
         if self.width == 0 or self.height == 0:
             return ""
-        rectangle_str = "\n".join(["#" * self.width for _ in range(self.height)])
+        rectangle_str = "\n".join(["#" * self.width for _ in 
+                                   range(self.height)])
         return rectangle_str
