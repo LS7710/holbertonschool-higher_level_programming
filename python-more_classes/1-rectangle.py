@@ -3,6 +3,7 @@
 Module for rectangle
 """
 
+
 class Rectangle:
     """
     A class to represent a rectangle.
@@ -11,7 +12,7 @@ class Rectangle:
     def __init__(self, width=0, height=0):
         """
         Initialize a new Rectangle.
-        
+
         :param width: The width of the rectangle
         :param height: The height of the rectangle
         """
@@ -29,7 +30,7 @@ class Rectangle:
     def width(self, value):
         """
         Set the width of the rectangle.
-        
+
         :param value: The width to set
         """
         if not isinstance(value, int):
@@ -49,7 +50,7 @@ class Rectangle:
     def height(self, value):
         """
         Set the height of the rectangle.
-        
+
         :param value: The height to set
         """
         if not isinstance(value, int):
@@ -57,4 +58,3 @@ class Rectangle:
         if value < 0:
             raise ValueError("height must be >= 0")
         self.__height = value
-        
