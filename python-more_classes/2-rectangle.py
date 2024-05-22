@@ -12,7 +12,7 @@ class Rectangle:
     def __init__(self, width=0, height=0):
         """
         Initialize a new Rectangle with optional width and height.
-        
+
         :param width: The width of the rectangle (default is 0).
         :param height: The height of the rectangle (default is 0).
         """
@@ -30,7 +30,7 @@ class Rectangle:
     def width(self, value):
         """
         Set the width of the rectangle.
-        
+
         :param value: The width to set, must be an integer and >= 0.
         """
         if not isinstance(value, int):
@@ -50,7 +50,7 @@ class Rectangle:
     def height(self, value):
         """
         Set the height of the rectangle.
-        
+
         :param value: The height to set, must be an integer and >= 0.
         """
         if not isinstance(value, int):
@@ -62,7 +62,7 @@ class Rectangle:
     def area(self):
         """
         Calculate the area of the rectangle.
-        
+
         :return: The area of the rectangle.
         """
         return self.width * self.height
@@ -70,7 +70,7 @@ class Rectangle:
     def perimeter(self):
         """
         Calculate the perimeter of the rectangle.
-        
+
         :return: The perimeter of the rectangle, or 0 if either dimension is 0.
         """
         if self.width == 0 or self.height == 0:
