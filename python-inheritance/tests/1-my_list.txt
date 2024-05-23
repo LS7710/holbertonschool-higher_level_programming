@@ -1,0 +1,11 @@
+# This is a test file for testing MyList class methods.
+
+>>> from 1-my_list import MyList
+>>> my_list = MyList()
+>>> my_list.extend([1, 4, 2, 3, 5])
+>>> my_list
+[1, 4, 2, 3, 5]
+>>> my_list.print_sorted()
+[1, 2, 3, 4, 5]
+>>> my_list
+[1, 4, 2, 3, 5]
