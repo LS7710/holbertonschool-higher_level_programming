@@ -1,16 +1,16 @@
 #!/usr/bin/python3
 """
-module 1
+Module 1-my_list
 """
 
 
 class MyList(list):
     """
-    mylsit class
+    extends the built-in list class.
     """
+
     def print_sorted(self):
         """
-        print func.
+        Prints the elements of the list.
         """
-        sorted_list = sorted(self)
-        print(sorted_list)
+        print(sorted(self))
