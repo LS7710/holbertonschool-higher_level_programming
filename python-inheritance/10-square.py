@@ -6,10 +6,12 @@ Module 10-square
 
 Rectangle = __import__('9-rectangle').Rectangle
 
+
 class Square(Rectangle):
+
     """
     A class that represents a square, inherits from Rectangle.
-    
+
     Attributes:
         __size (int): The size of the sides of the square, private attribute.
     """
