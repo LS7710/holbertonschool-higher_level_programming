@@ -1,8 +1,7 @@
 #!/usr/bin/python3
 """
-This module defines the Rectangle.
+This module defines the Rectangle class that inherits from BaseGeometry.
 """
-
 
 from 7-base_geometry import BaseGeometry
 
@@ -28,3 +27,5 @@ class Rectangle(BaseGeometry):
         self.integer_validator("height", height)
         self.__width = width
         self.__height = height
+
+
