@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-
 from abc import ABC, abstractmethod
 from math import pi
 
@@ -36,6 +35,7 @@ class Rectangle(Shape):
 def shape_info(shape):
     print("Area:", shape.area())
     print("Perimeter:", shape.perimeter())
+
 
 if __name__ == "__main__":
     circle = Circle(radius=5)
