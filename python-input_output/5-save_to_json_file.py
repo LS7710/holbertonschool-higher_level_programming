@@ -6,6 +6,7 @@ module 5
 
 import json
 
+
 def save_to_json_file(my_obj, filename):
     """
     Writes an object to file.
