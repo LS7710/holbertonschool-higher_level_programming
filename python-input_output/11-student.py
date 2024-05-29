@@ -3,6 +3,7 @@
 mod 11
 """
 
+
 class Student:
     """
     Represents a student with capabilities to serialize and deserialize
@@ -40,9 +41,9 @@ class Student:
         Returns:
             dict: A dictionary representation of the instance's attributes.
         """
-        if isinstance(attrs, list) and all(isinstance(attr, str) 
+        if isinstance(attrs, list) and all(isinstance(attr, str)
                                            for attr in attrs):
-            return {attr: getattr(self, attr) for attr in attrs 
+            return {attr: getattr(self, attr) for attr in attrs
                     if hasattr(self, attr)}
         return self.__dict__
 
@@ -53,7 +54,7 @@ class Student:
 
         Args:
             json (dict): A dictionary with keys as the names of the public
-            attributes of the instance and values as the new values for 
+            attributes of the instance and values as the new values for
             these attributes.
         """
         for key, value in json.items():
