@@ -3,6 +3,7 @@
 mod 10
 """
 
+
 class Student:
     """
     Represents a student with first name, last name, and age attributes,
@@ -38,7 +39,7 @@ class Student:
         """
         if attrs is not None and all(isinstance(attr, str) for attr in attrs):
             return {
-                attr: getattr(self, attr) 
+                attr: getattr(self, attr)
                 for attr in attrs if hasattr(self, attr)
             }
         return self.__dict__
