@@ -3,7 +3,6 @@
 mod 11
 """
 
-
 class Student:
     """
     Represents a student with capabilities to serialize and deserialize
@@ -35,14 +34,16 @@ class Student:
         are included in the dictionary.
 
         Args:
-            attrs (list): Optional list of strings specifying which attributes
-            to include in the resulting dictionary.
+            attrs (list): Optional list specifying which attributes to include
+            in the resulting dictionary.
 
         Returns:
             dict: A dictionary representation of the instance's attributes.
         """
-        if isinstance(attrs, list) and all(isinstance(attr, str) for attr in attrs):
-            return {attr: getattr(self, attr) for attr in attrs if hasattr(self, attr)}
+        if isinstance(attrs, list) and all(isinstance(attr, str) 
+                                           for attr in attrs):
+            return {attr: getattr(self, attr) for attr in attrs 
+                    if hasattr(self, attr)}
         return self.__dict__
 
     def reload_from_json(self, json):
@@ -51,9 +52,9 @@ class Student:
         a provided dictionary.
 
         Args:
-            json (dict): A dictionary with keys corresponding to the names
-            of the public attributes of the instance and values corresponding
-            to the values to be set to these attributes.
+            json (dict): A dictionary with keys as the names of the public
+            attributes of the instance and values as the new values for 
+            these attributes.
         """
         for key, value in json.items():
             setattr(self, key, value)
