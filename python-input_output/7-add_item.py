@@ -9,6 +9,15 @@ Uses:
 The script does not handle file permission exceptions or check for the validity of JSON content.
 """
 
+def load_from_json_file(filename):
+    import json
+    with open(filename, 'r', encoding='utf-8') as f:
+        return json.load(f)
+
+def save_to_json_file(my_obj, filename):
+    import json
+    with open(filename, 'w', encoding='utf-8') as f:
+        json.dump(my_obj, f)
 
 import sys
 import os
