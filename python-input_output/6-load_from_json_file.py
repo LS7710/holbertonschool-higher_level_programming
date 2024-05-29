@@ -6,6 +6,7 @@ module 6
 
 import json
 
+
 def load_from_json_file(filename):
     """
     Creates obj.
