@@ -39,10 +39,10 @@ class CustomObject:
         Deserialize an instance of CustomObject from a file.
         
         Parameters:
-        filename (str): The name of the file to load the serialized object from.
+        filename (str): The name of the file.
 
         Returns:
-        CustomObject: The deserialized instance of CustomObject, or None if an error occurs.
+        CustomObject: The deserialized instance of CustomObject.
         """
         try:
             with open(filename, 'rb') as file:
