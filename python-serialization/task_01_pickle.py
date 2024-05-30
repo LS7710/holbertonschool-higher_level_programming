@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-mod 1
+Module 1: CustomObject serialization and deserialization.
 """
 
 import pickle
