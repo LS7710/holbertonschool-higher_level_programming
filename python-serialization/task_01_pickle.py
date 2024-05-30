@@ -23,7 +23,7 @@ class CustomObject:
     def serialize(self, filename):
         """
         Serialize the current instance of CustomObject to a file.
-        
+
         Parameters:
         filename (str): The name of the file to save the serialized object.
         """
@@ -32,12 +32,12 @@ class CustomObject:
                 pickle.dump(self, file)
         except Exception as e:
             print(f"An error occurred while serializing: {e}")
-    
+
     @classmethod
     def deserialize(cls, filename):
         """
         Deserialize an instance of CustomObject from a file.
-        
+
         Parameters:
         filename (str): The name of the file.
 
