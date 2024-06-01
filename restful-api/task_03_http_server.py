@@ -1,33 +1,40 @@
 import requests
 import csv
 
-def get_posts():
+def fetch_and_print_posts():
+    url = "https://jsonplaceholder.typicode.com/posts"
+    response = requests.get(url)
+    
+    # Print the status code
+    print(f"Status Code: {response.status_code}")
+    
+    if response.status_code == 200:
+        posts = response.json()
+        for post in posts:
+            print(post['title'])
+    else:
+        print("Failed to fetch posts")
+
+def fetch_and_save_posts():
     url = "https://jsonplaceholder.typicode.com/posts"
     response = requests.get(url)
     
     if response.status_code == 200:
-        return response.json()
-    else:
-        print(f"Failed to fetch posts, status code: {response.status_code}")
-        return None
-
-def print_posts():
-    posts = get_posts()
-    if posts:
+        posts = response.json()
+        data = []
         for post in posts:
-            print(post['title'])
-
-def save_posts_to_csv():
-    posts = get_posts()
-    if posts:
+            data.append({
+                'id': post['id'],
+                'title': post['title'],
+                'body': post['body']
+            })
+        
         with open('posts.csv', 'w', newline='') as csvfile:
             fieldnames = ['id', 'title', 'body']
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
             
             writer.writeheader()
-            for post in posts:
-                writer.writerow({
-                    'id': post['id'],
-                    'title': post['title'],
-                    'body': post['body']
-                })
+            for row in data:
+                writer.writerow(row)
+    else:
+        print("Failed to fetch posts")
