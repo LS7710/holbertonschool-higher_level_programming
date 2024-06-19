@@ -1,10 +1,5 @@
--- Create the MySQL server user user_0d_1 with all privileges
-
--- Check if the user already exists and create if not
+-- creating a user and granting privileges, the user have a password too
+DROP USER IF EXISTS 'user_0d_1'@'localhost';
 CREATE USER IF NOT EXISTS 'user_0d_1'@'localhost' IDENTIFIED BY 'user_0d_1_pwd';
-
--- Check if the user already has all privileges and grant if not
-GRANT ALL PRIVILEGES ON *.* TO 'user_0d_1'@'localhost' WITH GRANT OPTION;
-
--- Apply changes
+GRANT ALL PRIVILEGES ON *.* TO 'user_0d_1'@'localhost';
 FLUSH PRIVILEGES;
