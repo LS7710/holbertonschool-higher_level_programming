@@ -21,11 +21,11 @@ def main():
     # Create a cursor object
     cur = db.cursor()
 
-    # Create the SQL query string
-    query = "SELECT * FROM states WHERE name = %s ORDER BY id ASC"
+    # Create the SQL query string using format for placeholder
+    query = "SELECT * FROM states WHERE name = '{}' ORDER BY id ASC".format(state_name.replace("'", "\\'"))
 
     # Execute the SQL query
-    cur.execute(query, (state_name,))
+    cur.execute(query)
 
     # Fetch all the rows
     rows = cur.fetchall()
