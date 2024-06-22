@@ -1,48 +1,52 @@
 #!/usr/bin/python3
 """
-This script lists all states with names starting with 'N' from the database
-hbtn_0e_0_usa using SQLAlchemy.
+This module filters and lists states from a database whose names begin with 'N',
+utilizing SQLAlchemy to interact with a MySQL database.
 """
-
 import sys
 from sqlalchemy import create_engine, Column, Integer, String
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker
+from sqlalchemy.orm import declarative_base, sessionmaker
 
 Base = declarative_base()
 
 class State(Base):
     """
-    State class mapped to the 'states' table in the database.
+    Defines the structure of the 'states' table in a MySQL database.
     """
     __tablename__ = 'states'
     id = Column(Integer, primary_key=True, nullable=False)
     name = Column(String(256), nullable=False)
 
-def fetch_states_with_n(user, passwd, db):
+def list_states_with_n_prefix(username, password, dbname):
     """
-    Connect to the MySQL database and fetch all states with names
-    starting with 'N', ordered by their IDs.
-    
+    Fetches and displays states that start with the letter 'N', ordered by their ID.
+
     Args:
-        user (str): MySQL username.
-        passwd (str): MySQL password.
-        db (str): Database name.
+        username (str): MySQL database username.
+        password (str): MySQL database password.
+        dbname (str): MySQL database name.
     """
-    # Create engine and bind it to the session
-    engine = create_engine(f"mysql+mysqldb://{user}:{passwd}@localhost:3306/{db}")
+    # Connect to the database using SQLAlchemy engine
+    connection_url = f"mysql+mysqldb://{username}:{password}@localhost:3306/{dbname}"
+    engine = create_engine(connection_url)
+
+    # Setup a session
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    # Fetch and print states starting with 'N'
-    states = session.query(State).order_by(State.id).all()
-    for state in states:
+    # Perform a query to retrieve all states and sort them by ID
+    query_result = session.query(State).order_by(State.id).all()
+
+    # Display states starting with 'N'
+    for state in query_result:
         if state.name.startswith('N'):
             print(f"({state.id}, '{state.name}')")
-    
+
     session.close()
 
 if __name__ == "__main__":
     if len(sys.argv) == 4:
-        username, password, dbname = sys.argv[1:4]
-        fetch_states_with_n(username, password, dbname)
+        username = sys.argv[1]
+        password = sys.argv[2]
+        dbname = sys.argv[3]
+        list_states_with_n_prefix(username, password, dbname)
