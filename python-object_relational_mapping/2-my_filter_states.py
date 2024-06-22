@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-# A simple script to find states in a database matching a name
+"""
+A simple script to find states in a database matching a name
+"""
 
 import MySQLdb
 import sys
