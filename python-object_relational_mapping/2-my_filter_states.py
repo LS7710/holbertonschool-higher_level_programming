@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """
-This script takes 4 arguments: mysql username, mysql password, database name, and state name.
-It queries the states table in the specified MySQL database for records where the state name matches the user input.
+t2
 """
 
 import sys
@@ -22,7 +21,8 @@ def main():
     cur = db.cursor()
 
     # Create the SQL query string using format for placeholder
-    query = "SELECT * FROM states WHERE name = '{}' ORDER BY id ASC".format(state_name.replace("'", "\\'"))
+    query = "SELECT * FROM states WHERE name = '{}' \
+        ORDER BY id ASC".format(state_name.replace("'", "\\'"))
 
     # Execute the SQL query
     cur.execute(query)
