@@ -17,7 +17,7 @@ def main():
                          passwd=mysql_password,
                          db=database_name,
                          port=3306)
-    
+
     # Create a cursor object
     cur = db.cursor()
 
@@ -37,6 +37,7 @@ def main():
     # Close cursor and database connection
     cur.close()
     db.close()
+
 
 if __name__ == "__main__":
     main()
