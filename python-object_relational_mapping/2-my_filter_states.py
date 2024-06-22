@@ -21,7 +21,7 @@ def main():
     cur = db.cursor()
 
     # Create the SQL query string using format for placeholder
-    query = "SELECT * FROM states WHERE name = '{}' \
+    query = "SELECT * FROM states WHERE name = '{}'\
         ORDER BY id ASC".format(state_name.replace("'", "\\'"))
 
     # Execute the SQL query
