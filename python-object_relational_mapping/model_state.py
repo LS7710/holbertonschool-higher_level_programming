@@ -12,6 +12,7 @@ from sqlalchemy.ext.declarative import declarative_base
 # Base instance for declarative system
 Base = declarative_base()
 
+
 class State(Base):
     """State class:
     - inherits from Base
@@ -24,6 +25,6 @@ class State(Base):
 
 if __name__ == "__main__":
     engine = create_engine\
-        ('mysql+mysqldb://root:root@localhost/hbtn_0e_6_usa',\
+        ('mysql+mysqldb://root:root@localhost/hbtn_0e_6_usa', \
          pool_pre_ping=True)
     Base.metadata.create_all(engine)
