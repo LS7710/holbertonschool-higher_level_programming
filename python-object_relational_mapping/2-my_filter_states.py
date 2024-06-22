@@ -1,46 +1,42 @@
 #!/usr/bin/python3
 """
-A simple script to find states in a database matching a name
+This script takes 4 arguments: mysql username, mysql password, database name, and state name.
+It queries the states table in the specified MySQL database for records where the state name matches the user input.
 """
 
-import MySQLdb
 import sys
-from sqlalchemy import create_engine, Column, Integer, String, text
-from sqlalchemy.orm import declarative_base, sessionmaker
+import MySQLdb
 
-# Set up base class
-Base = declarative_base()
+def main():
+    # Unpack command line arguments
+    mysql_username, mysql_password, database_name, state_name = sys.argv[1:]
 
-class State(Base):
-    # Table configuration
-    __tablename__ = 'states'
-    id = Column(Integer, primary_key=True)
-    name = Column(String(256))
+    # Establish a database connection
+    db = MySQLdb.connect(host="localhost",
+                         user=mysql_username,
+                         passwd=mysql_password,
+                         db=database_name,
+                         port=3306)
+    
+    # Create a cursor object
+    cur = db.cursor()
 
-def find_states(username, password, dbname, state_name):
-    # This function looks for states with a given name
-    connection_string = f"mysql+mysqldb://{username}:{password}@localhost:3306/{dbname}"
-    engine = create_engine(connection_string)
+    # Create the SQL query string
+    query = "SELECT * FROM states WHERE name = %s ORDER BY id ASC"
 
-    # Make session class and instance
-    Session = sessionmaker(bind=engine)
-    session = Session()
+    # Execute the SQL query
+    cur.execute(query, (state_name,))
 
-    # Prepare and run the query
-    sql_query = "SELECT * FROM states WHERE name = '{}' ORDER BY id".format(state_name)
-    result = session.execute(sql_query).fetchall()
+    # Fetch all the rows
+    rows = cur.fetchall()
 
-    # Display results
-    for state in result:
-        print(f"({state.id}, '{state.name}')")
+    # Print each row
+    for row in rows:
+        print(row)
 
-    session.close()  # Don't forget to close the session
+    # Close cursor and database connection
+    cur.close()
+    db.close()
 
-# Check if script is run as main
 if __name__ == "__main__":
-    if len(sys.argv) == 5:
-        user = sys.argv[1]
-        passw = sys.argv[2]
-        db = sys.argv[3]
-        name_of_state = sys.argv[4]
-        find_states(user, passw, db, name_of_state)
+    main()
