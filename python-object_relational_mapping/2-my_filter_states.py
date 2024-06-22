@@ -22,7 +22,8 @@ def main():
     cur = db.cursor()
 
     # Create the SQL query string using format for placeholder
-    query = "SELECT * FROM states WHERE name = '{}'\
+    # Using BINARY for case-sensitive comparison
+    query = "SELECT * FROM states WHERE BINARY name = '{}'\
         ORDER BY id ASC".format(state_name.replace("'", "\\'"))
 
     # Execute the SQL query
