@@ -12,7 +12,10 @@ if __name__ == "__main__":
     mysql_username, mysql_password, database_name = sys.argv[1:]
 
     # Create an engine that will connect to the MySQL server
-    engine = create_engine(f'mysql+mysqldb://{mysql_username}:{mysql_password}@localhost/{database_name}', pool_pre_ping=True)
+    engine = create_engine(
+        f'mysql+mysqldb://{mysql_username}:{mysql_password}@localhost/{database_name}',
+        pool_pre_ping=True
+    )
 
     # Bind the engine to the metadata of the Base class so that the
     # declaratives can be accessed through a DBSession instance
