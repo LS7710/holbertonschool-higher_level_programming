@@ -25,6 +25,6 @@ class State(Base):
 
 if __name__ == "__main__":
     engine =\
-        create_engine('mysql+mysqldb://root:root@localhost/hbtn_0e_6_usa',
+        create_engine('mysql+mysqldb://root:root@localhost/hbtn_0e_6_usa',\
          pool_pre_ping=True)
     Base.metadata.create_all(engine)
