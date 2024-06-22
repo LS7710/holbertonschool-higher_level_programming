@@ -9,6 +9,7 @@ from sqlalchemy.orm import sessionmaker
 from model_state import Base, State
 from model_city import City
 
+
 if __name__ == "__main__":
     usr, pwd, db = sys.argv[1:]
 
