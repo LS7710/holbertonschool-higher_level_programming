@@ -1,34 +1,47 @@
 #!/usr/bin/python3
-"""
-This script lists all states from the database hbtn_0e_0_usa.
-"""
-
-import MySQLdb
+"""Lists all states in the database."""
 import sys
+import MySQLdb
+from sqlalchemy import create_engine, Column, Integer, String
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
 
-def main():
-    # Get command line arguments
-    mysql_username = sys.argv[1]
-    mysql_password = sys.argv[2]
-    database_name = sys.argv[3]
+Base = declarative_base()
 
-    # Connect to the MySQL database
-    db = MySQLdb.connect(host="localhost", port=3306, user=mysql_username, passwd=mysql_password, db=database_name)
-    cursor = db.cursor()
+class State(Base):
+    """Defines the State model."""
+    __tablename__ = 'states'
+    id = Column(Integer, primary_key=True, nullable=False)
+    name = Column(String(256), nullable=False)
 
-    # Execute the query to get all states sorted by id
-    cursor.execute("SELECT * FROM states ORDER BY id ASC")
+def list_states(username, password, dbname):
+    """Connects to the MySQL database and lists all states."""
+    # Create a connection string
+    connection_string = f"mysql+mysqldb://{username}:{password}@localhost/{dbname}"
 
-    # Fetch all the rows
-    states = cursor.fetchall()
+    # Create an engine
+    engine = create_engine(connection_string)
 
-    # Print the rows
+    # Create a configured "Session" class
+    Session = sessionmaker(bind=engine)
+
+    # Create a Session
+    session = Session()
+
+    # Query all states and order by id
+    states = session.query(State).order_by(State.id.asc()).all()
+
+    # Print each state
     for state in states:
-        print(state)
+        print(f"({state.id}, '{state.name}')")
 
-    # Close the cursor and the database connection
-    cursor.close()
-    db.close()
+    session.close()
 
 if __name__ == "__main__":
-    main()
+    # Get command line arguments
+    username = sys.argv[1]
+    password = sys.argv[2]
+    dbname = sys.argv[3]
+
+    # Call the function to list states
+    list_states(username, password, dbname)
