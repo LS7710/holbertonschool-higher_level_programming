@@ -1,48 +1,51 @@
 #!/usr/bin/python3
-"""Lists all states in the database."""
-import sys
+"""list states in database"""
 import MySQLdb
-from sqlalchemy import create_engine, Column, Integer, String
+import sys
+from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
+from sqlalchemy import Column, Integer, String
 
 Base = declarative_base()
 
+
 class State(Base):
-    """Defines the State model."""
+    """base of the sql"""
     __tablename__ = 'states'
     id = Column(Integer, primary_key=True, nullable=False)
     name = Column(String(256), nullable=False)
 
+
 def list_states(username, password, dbname):
-    """Connects to the MySQL database and lists all states."""
-    # Create the connection string
-    connection_string = f"mysql+mysqldb://{username}:{password}@localhost/{dbname}"
+    """connects to mysql database"""
+    # create a connection string
+    conn_str = f"mysql+mysqldb://{username}:{password}@localhost/{dbname}"
 
-    # Initialize the database engine
-    engine = create_engine(connection_string)
+    # create an engine
+    engine = create_engine(conn_str)
 
-    # Configure a Session class
+    # create a configured "Session" class
     Session = sessionmaker(bind=engine)
 
-    # Start a new session
+    # create a Session
     session = Session()
 
-    # Query all states, ordered by id
+    # query all states and order by id
     states = session.query(State).order_by(State.id.asc()).all()
 
-    # Print each state
+    # print each state
     for state in states:
         print(f"({state.id}, '{state.name}')")
 
-    # Close the session
     session.close()
 
+
 if __name__ == "__main__":
-    # Get command line arguments
+    # get command line arg
     username = sys.argv[1]
     password = sys.argv[2]
     dbname = sys.argv[3]
 
-    # Call the function to list states
+    # call the function to list states
     list_states(username, password, dbname)
